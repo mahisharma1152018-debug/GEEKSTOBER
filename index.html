@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEEKSTOBER FEST - Campus Body RBU</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'gfg-green': '#008751',
+                        'gfg-darkgreen': '#00663d',
+                        'gfg-navy': '#032b43',
+                        'gfg-blue': '#0284c7',
+                        'gfg-lightbg': '#f0f7ff',
+                        'gfg-cardbg': '#e0f2fe'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-gfg-green selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-sky-100 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Custom RBU Campus Body Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="h-14 flex items-center justify-center p-1 bg-white rounded-xl shadow-sm border border-sky-100 group-hover:scale-105 transition-transform duration-200">
+                    <svg class="h-full w-auto" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Mortarboard Cap (Navy) -->
+                        <path d="M150 10 L280 60 L150 110 L20 60 Z" fill="#032b43"/>
+                        <path d="M110 50 L220 20 L220 30 L110 60 Z" fill="#ffffff" opacity="0.3"/>
+                        <path d="M265 65 L265 130 L255 130 L255 65 Z" fill="#032b43"/>
+                        <polygon points="260,130 270,150 250,150" fill="#032b43"/>
+                        
+                        <!-- Smooth Solid G|G Emblem (GFG Green) -->
+                        <path d="M130 115 C100 115 80 135 80 165 C80 195 100 215 130 215 L145 215 L145 190 L130 190 C115 190 105 180 105 165 C105 150 115 140 130 140 L145 140 L145 115 Z" fill="#008751"/>
+                        <path d="M170 115 C200 115 220 135 220 165 C220 195 200 215 170 215 L155 215 L155 190 L170 190 C185 190 195 180 195 165 C195 150 185 140 170 140 L155 140 L155 115 Z" fill="#008751"/>
+                        
+                        <!-- Center Diamond Accent -->
+                        <polygon points="150,210 165,225 150,240 135,225" fill="#032b43"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-extrabold text-xl tracking-tight text-gfg-navy">GEEKSTOBER</span>
+                        <span class="font-extrabold text-xl tracking-tight text-gfg-green">FEST</span>
+                    </div>
+                    <span class="text-xs font-semibold text-sky-600 block tracking-wider uppercase">Campus Body RBU</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-slate-600">
+                <a href="#about" class="hover:text-gfg-green transition-colors">About</a>
+                <a href="#projects" class="hover:text-gfg-green transition-colors">Projects</a>
+                <a href="#leaderboard" class="hover:text-gfg-green transition-colors">Leaderboard</a>
+                <a href="#rules" class="hover:text-gfg-green transition-colors">Rules & Badges</a>
+                <a href="#timeline" class="hover:text-gfg-green transition-colors">Timeline</a>
+                <a href="#faq" class="hover:text-gfg-green transition-colors">FAQs</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button onclick="openRegisterModal()" class="px-5 py-2.5 rounded-xl font-semibold text-sm bg-gfg-green hover:bg-gfg-darkgreen text-white shadow-md shadow-emerald-600/20 transition-all transform hover:-translate-y-0.5">
+                    Register Now
+                </button>
+            </div>
+
+            <!-- Mobile Menu Toggle -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium hover:text-gfg-green">About</a>
+            <a href="#projects" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium hover:text-gfg-green">Projects</a>
+            <a href="#leaderboard" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium hover:text-gfg-green">Leaderboard</a>
+            <a href="#rules" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium hover:text-gfg-green">Rules & Badges</a>
+            <a href="#timeline" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium hover:text-gfg-green">Timeline</a>
+            <a href="#faq" onclick="toggleMobileMenu()" class="block py-2 text-slate-600 font-medium hover:text-gfg-green">FAQs</a>
+            <button onclick="toggleMobileMenu(); openRegisterModal();" class="w-full mt-2 px-5 py-2.5 rounded-xl font-semibold text-sm bg-gfg-green text-white text-center shadow-md">
+                Register Now
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 bg-gradient-to-b from-sky-50 via-white to-slate-50 overflow-hidden">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[800px] h-[350px] bg-sky-200/50 rounded-full blur-3xl"></div>
+            <div class="absolute top-40 right-10 w-72 h-72 bg-emerald-100/60 rounded-full blur-2xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <!-- Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-gfg-darkgreen text-xs font-bold uppercase tracking-wider mb-6">
+                <span class="w-2 h-2 rounded-full bg-gfg-green animate-ping"></span>
+                GFG Student Chapter RBU Event
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-gfg-navy mb-6 leading-tight">
+                Celebrate Open Source with <br class="hidden sm:inline"/>
+                <span class="bg-gradient-to-r from-gfg-green via-emerald-600 to-sky-600 bg-clip-text text-transparent">GEEKSTOBER FEST</span>
+            </h1>
+
+            <p class="max-w-3xl mx-auto text-lg sm:text-xl text-slate-600 font-normal leading-relaxed mb-10">
+                A month-long open-source event presented by <b>Campus Body RBU</b>. Contribute to real-world projects, earn exclusive badges, top the leaderboard, and jumpstart your developer journey!
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <button onclick="openRegisterModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base bg-gfg-green hover:bg-gfg-darkgreen text-white shadow-lg shadow-emerald-700/25 transition-all transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                    Register via GitHub
+                </button>
+                <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-base bg-white hover:bg-sky-50 text-slate-700 border border-slate-200 shadow-sm transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="code" class="w-5 h-5 text-sky-600"></i>
+                    Explore Projects
+                </a>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="max-w-2xl mx-auto bg-white border border-sky-100 rounded-2xl p-6 shadow-xl shadow-sky-100/50">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">Event Ends In</p>
+                <div class="grid grid-cols-4 gap-3 sm:gap-6 text-center">
+                    <div class="p-3 bg-sky-50/70 rounded-xl border border-sky-100">
+                        <span id="days" class="block text-2xl sm:text-4xl font-black text-gfg-navy">18</span>
+                        <span class="text-xs font-semibold text-slate-500">Days</span>
+                    </div>
+                    <div class="p-3 bg-sky-50/70 rounded-xl border border-sky-100">
+                        <span id="hours" class="block text-2xl sm:text-4xl font-black text-gfg-navy">14</span>
+                        <span class="text-xs font-semibold text-slate-500">Hours</span>
+                    </div>
+                    <div class="p-3 bg-sky-50/70 rounded-xl border border-sky-100">
+                        <span id="minutes" class="block text-2xl sm:text-4xl font-black text-gfg-navy">32</span>
+                        <span class="text-xs font-semibold text-slate-500">Minutes</span>
+                    </div>
+                    <div class="p-3 bg-sky-50/70 rounded-xl border border-sky-100">
+                        <span id="seconds" class="block text-2xl sm:text-4xl font-black text-gfg-navy">45</span>
+                        <span class="text-xs font-semibold text-slate-500">Seconds</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics Stats Bar -->
+    <section class="border-y border-sky-100 bg-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gfg-navy">450+</div>
+                    <div class="text-sm font-semibold text-slate-500 mt-1">Registrations</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gfg-green">30+</div>
+                    <div class="text-sm font-semibold text-slate-500 mt-1">Open Source Projects</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-sky-600">1,200+</div>
+                    <div class="text-sm font-semibold text-slate-500 mt-1">Pull Requests</div>
+                </div>
+                <div>
+                    <div class="text-3xl sm:text-4xl font-extrabold text-gfg-navy">25+</div>
+                    <div class="text-sm font-semibold text-slate-500 mt-1">Project Mentors</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-xs font-extrabold text-gfg-green tracking-widest uppercase">Repositories</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-gfg-navy mt-1">Participating Projects</h2>
+                </div>
+                <p class="text-slate-600 max-w-md mt-2 md:mt-0 text-sm">
+                    Select a project matching your stack, filter by tags, and start contributing by opening pull requests!
+                </p>
+            </div>
+
+            <!-- Filters & Search -->
+            <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                <div class="relative flex-1">
+                    <i data-lucide="search" class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="projectSearch" oninput="filterProjects()" placeholder="Search project name, tech stack or mentor..." class="w-full pl-11 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gfg-green">
+                </div>
+                <div class="flex gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
+                    <button onclick="setCategory('all')" class="cat-btn active px-4 py-2.5 rounded-xl text-xs font-bold bg-gfg-navy text-white whitespace-nowrap">All Stack</button>
+                    <button onclick="setCategory('web')" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-sky-50 whitespace-nowrap">Web Dev</button>
+                    <button onclick="setCategory('app')" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-sky-50 whitespace-nowrap">App Dev</button>
+                    <button onclick="setCategory('ai')" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-sky-50 whitespace-nowrap">AI / ML</button>
+                    <button onclick="setCategory('beginner')" class="cat-btn px-4 py-2.5 rounded-xl text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-sky-50 whitespace-nowrap">Beginner Friendly</button>
+                </div>
+            </div>
+
+            <!-- Project Cards Grid -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Cards dynamically populated / hardcoded below for preview -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Leaderboard Section -->
+    <section id="leaderboard" class="py-20 bg-white border-t border-sky-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold text-gfg-green tracking-widest uppercase">Live Rankings</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gfg-navy mt-1">Contributions Leaderboard</h2>
+                <p class="text-slate-600 mt-3 text-sm">Points update automatically whenever your Pull Request is merged with a difficulty label.</p>
+            </div>
+
+            <!-- Top 3 Podium -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12 items-end">
+                <!-- Rank 2 -->
+                <div class="bg-gradient-to-b from-sky-50 to-white border border-sky-200 rounded-2xl p-6 text-center order-2 md:order-1 relative">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-slate-200 text-slate-700 font-black px-3 py-1 rounded-full text-xs border border-slate-300">#2 RANK</span>
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=faces" class="w-20 h-20 rounded-full mx-auto border-4 border-slate-300 shadow-md mb-3 mt-2">
+                    <h3 class="font-bold text-gfg-navy">Aanya Sharma</h3>
+                    <p class="text-xs font-semibold text-slate-500">@aanya_dev</p>
+                    <div class="mt-4 pt-3 border-t border-sky-100 flex justify-around">
+                        <div><span class="text-xs text-slate-400 block">PRs</span><span class="font-black text-slate-700">14</span></div>
+                        <div><span class="text-xs text-slate-400 block">Points</span><span class="font-black text-gfg-green">340</span></div>
+                    </div>
+                </div>
+
+                <!-- Rank 1 -->
+                <div class="bg-gradient-to-b from-emerald-50 to-white border-2 border-gfg-green rounded-2xl p-6 text-center order-1 md:order-2 shadow-xl relative -translate-y-2">
+                    <span class="absolute -top-5 left-1/2 -translate-x-1/2 bg-gfg-green text-white font-black px-4 py-1.5 rounded-full text-xs shadow-md">🏆 WINNER</span>
+                    <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=faces" class="w-24 h-24 rounded-full mx-auto border-4 border-gfg-green shadow-md mb-3 mt-1">
+                    <h3 class="font-extrabold text-lg text-gfg-navy">Rohan Kulkarni</h3>
+                    <p class="text-xs font-semibold text-gfg-green">@rohan_rbu</p>
+                    <div class="mt-4 pt-3 border-t border-emerald-100 flex justify-around">
+                        <div><span class="text-xs text-slate-400 block">PRs</span><span class="font-black text-slate-700">21</span></div>
+                        <div><span class="text-xs text-slate-400 block">Points</span><span class="font-black text-gfg-green">510</span></div>
+                    </div>
+                </div>
+
+                <!-- Rank 3 -->
+                <div class="bg-gradient-to-b from-sky-50 to-white border border-sky-200 rounded-2xl p-6 text-center order-3 relative">
+                    <span class="absolute -top-4 left-1/2 -translate-x-1/2 bg-amber-100 text-amber-800 font-black px-3 py-1 rounded-full text-xs border border-amber-300">#3 RANK</span>
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces" class="w-20 h-20 rounded-full mx-auto border-4 border-amber-300 shadow-md mb-3 mt-2">
+                    <h3 class="font-bold text-gfg-navy">Vikram Mehta</h3>
+                    <p class="text-xs font-semibold text-slate-500">@vikram_m</p>
+                    <div class="mt-4 pt-3 border-t border-sky-100 flex justify-around">
+                        <div><span class="text-xs text-slate-400 block">PRs</span><span class="font-black text-slate-700">11</span></div>
+                        <div><span class="text-xs text-slate-400 block">Points</span><span class="font-black text-gfg-green">280</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden max-w-5xl mx-auto">
+                <div class="p-4 border-b border-slate-100 bg-sky-50/50 flex justify-between items-center">
+                    <span class="font-bold text-sm text-gfg-navy">Full Contributor Standings</span>
+                    <input type="text" id="leaderboardSearch" oninput="filterLeaderboard()" placeholder="Search handle..." class="px-3 py-1.5 text-xs border border-slate-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-gfg-green bg-white">
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 text-slate-500 text-xs uppercase font-semibold border-b border-slate-100">
+                                <th class="py-3 px-4">Rank</th>
+                                <th class="py-3 px-4">Contributor</th>
+                                <th class="py-3 px-4">Merged PRs</th>
+                                <th class="py-3 px-4">Badges</th>
+                                <th class="py-3 px-4 text-right">Total Points</th>
+                            </tr>
+                        </thead>
+                        <tbody id="leaderboardBody" class="divide-y divide-slate-100 text-sm font-medium text-slate-700">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rules & Badges Section -->
+    <section id="rules" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-extrabold text-gfg-green tracking-widest uppercase">Guidelines & Rewards</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gfg-navy mt-1">Rules & Unlockable Badges</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <!-- Rules Column -->
+                <div class="bg-white p-8 rounded-2xl border border-sky-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-3 bg-emerald-50 rounded-xl text-gfg-green"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold text-gfg-navy">Event Rules & Points</h3>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gfg-green shrink-0 mt-0.5"></i>
+                            <span>Register via your official GitHub account before submitting PRs.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gfg-green shrink-0 mt-0.5"></i>
+                            <span>Only PRs created between <b>Oct 1 and Oct 31</b> in official designated repos will count.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-gfg-green shrink-0 mt-0.5"></i>
+                            <span>Spam or auto-generated PRs will result in immediate disqualification.</span>
+                        </li>
+                    </ul>
+
+                    <div class="mt-8 pt-6 border-t border-slate-100">
+                        <h4 class="font-bold text-xs uppercase tracking-wider text-slate-400 mb-3">Points Breakdown</h4>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            <div class="p-3 bg-sky-50 rounded-xl border border-sky-100">
+                                <span class="block text-xs font-bold text-sky-700">Level 1 (Easy)</span>
+                                <span class="text-lg font-black text-gfg-navy">10 Pts</span>
+                            </div>
+                            <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-100">
+                                <span class="block text-xs font-bold text-gfg-darkgreen">Level 2 (Medium)</span>
+                                <span class="text-lg font-black text-gfg-green">20 Pts</span>
+                            </div>
+                            <div class="p-3 bg-purple-50 rounded-xl border border-purple-100">
+                                <span class="block text-xs font-bold text-purple-700">Level 3 (Hard)</span>
+                                <span class="text-lg font-black text-purple-900">30 Pts</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Badges Grid -->
+                <div class="bg-white p-8 rounded-2xl border border-sky-100 shadow-sm">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="p-3 bg-sky-50 rounded-xl text-sky-600"><i data-lucide="award" class="w-6 h-6"></i></div>
+                        <h3 class="text-xl font-bold text-gfg-navy">Digital Badges</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-emerald-100 text-gfg-green flex items-center justify-center font-bold text-sm shrink-0">🌱</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gfg-navy">First PR</h4>
+                                <p class="text-xs text-slate-500">Merge 1 Pull Request</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center font-bold text-sm shrink-0">🐛</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gfg-navy">Bug Hunter</h4>
+                                <p class="text-xs text-slate-500">Fix 3 reported issues</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center font-bold text-sm shrink-0">🚀</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gfg-navy">Octo Master</h4>
+                                <p class="text-xs text-slate-500">Reach 200+ points</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50/50 flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-sm shrink-0">👑</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-gfg-navy">Top 10 Finisher</h4>
+                                <p class="text-xs text-slate-500">Finish in Top 10 rank</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs font-extrabold text-gfg-green tracking-widest uppercase">Event Schedule</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gfg-navy mt-1">Geekstober Fest Timeline</h2>
+            </div>
+
+            <div class="relative border-l-2 border-sky-100 ml-4 md:ml-32 space-y-10">
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-gfg-green ring-4 ring-emerald-50"></span>
+                    <span class="text-xs font-bold text-gfg-green">OCT 01, 2026</span>
+                    <h3 class="text-lg font-bold text-gfg-navy mt-1">Registrations Open & Kickoff Session</h3>
+                    <p class="text-sm text-slate-600 mt-1">Registration opens for all college students. Mentors publish initial project repos.</p>
+                </div>
+
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 ring-4 ring-sky-50"></span>
+                    <span class="text-xs font-bold text-sky-600">OCT 05 - OCT 25</span>
+                    <h3 class="text-lg font-bold text-gfg-navy mt-1">Contribution Phase</h3>
+                    <p class="text-sm text-slate-600 mt-1">Start picking issues, opening pull requests, and collecting leaderboard points.</p>
+                </div>
+
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 ring-4 ring-amber-50"></span>
+                    <span class="text-xs font-bold text-amber-600">OCT 31, 2026</span>
+                    <h3 class="text-lg font-bold text-gfg-navy mt-1">Code Freeze</h3>
+                    <p class="text-sm text-slate-600 mt-1">PR submission window closes at 11:59 PM IST. Mentors finalize review merges.</p>
+                </div>
+
+                <div class="relative pl-8">
+                    <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-purple-50"></span>
+                    <span class="text-xs font-bold text-purple-600">NOV 05, 2026</span>
+                    <h3 class="text-lg font-bold text-gfg-navy mt-1">Closing Ceremony & Rewards Distribution</h3>
+                    <p class="text-sm text-slate-600 mt-1">Announcement of top contributors, distribution of swags, certificates, and badges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-slate-50 border-t border-sky-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-xs font-extrabold text-gfg-green tracking-widest uppercase">Got Questions?</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-gfg-navy mt-1">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4" id="faqAccordion">
+                <!-- FAQ Item 1 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq(1)" class="w-full p-5 text-left font-bold text-gfg-navy flex justify-between items-center hover:bg-sky-50/50 transition-colors">
+                        <span>Who can participate in GEEKSTOBER FEST?</span>
+                        <i id="faq-icon-1" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq-answer-1" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                        Any college student regardless of branch or year! Beginners are especially encouraged to join—we have projects marked with 'Beginner Friendly' labels specifically for first-time open source contributors.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq(2)" class="w-full p-5 text-left font-bold text-gfg-navy flex justify-between items-center hover:bg-sky-50/50 transition-colors">
+                        <span>How are leaderboard points calculated?</span>
+                        <i id="faq-icon-2" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq-answer-2" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                        Points are awarded based on difficulty tags assigned to merged PRs: Level 1 (Easy) = 10 pts, Level 2 (Medium) = 20 pts, and Level 3 (Hard) = 30 pts.
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                    <button onclick="toggleFaq(3)" class="w-full p-5 text-left font-bold text-gfg-navy flex justify-between items-center hover:bg-sky-50/50 transition-colors">
+                        <span>Will participants receive certificates?</span>
+                        <i id="faq-icon-3" data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform"></i>
+                    </button>
+                    <div id="faq-answer-3" class="hidden p-5 pt-0 text-sm text-slate-600 border-t border-slate-100">
+                        Yes! All registered contributors who get at least 2 valid Pull Requests merged will receive an official digital certificate from Campus Body RBU.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gfg-navy text-white pt-16 pb-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="h-10 p-1 bg-white rounded-lg">
+                            <svg class="h-full w-auto" viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M150 10 L280 60 L150 110 L20 60 Z" fill="#032b43"/>
+                                <path d="M130 115 C100 115 80 135 80 165 C80 195 100 215 130 215 L145 215 L145 190 L130 190 C115 190 105 180 105 165 C105 150 115 140 130 140 L145 140 L145 115 Z" fill="#008751"/>
+                                <path d="M170 115 C200 115 220 135 220 165 C220 195 200 215 170 215 L155 215 L155 190 L170 190 C185 190 195 180 195 165 C195 150 185 140 170 140 L155 140 L155 115 Z" fill="#008751"/>
+                            </svg>
+                        </div>
+                        <span class="text-xl font-black text-white">GEEKSTOBER FEST</span>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-sm">
+                        Organized with ❤️ by <b>Campus Body RBU</b>. Promoting open source culture and software engineering excellence.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-slate-300 mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-slate-400">
+                        <li><a href="#projects" class="hover:text-gfg-green">Projects</a></li>
+                        <li><a href="#leaderboard" class="hover:text-gfg-green">Leaderboard</a></li>
+                        <li><a href="#rules" class="hover:text-gfg-green">Rules & Badges</a></li>
+                        <li><a href="#timeline" class="hover:text-gfg-green">Timeline</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-sm uppercase tracking-wider text-slate-300 mb-4">Community</h4>
+                    <div class="flex gap-4 text-slate-400">
+                        <a href="#" class="p-2.5 bg-slate-800 rounded-lg hover:bg-gfg-green hover:text-white transition-colors"><i data-lucide="github" class="w-5 h-5"></i></a>
+                        <a href="#" class="p-2.5 bg-slate-800 rounded-lg hover:bg-gfg-green hover:text-white transition-colors"><i data-lucide="disc" class="w-5 h-5"></i></a>
+                        <a href="#" class="p-2.5 bg-slate-800 rounded-lg hover:bg-gfg-green hover:text-white transition-colors"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+                &copy; 2026 GEEKSTOBER FEST - Campus Body RBU. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl relative border border-slate-100">
+            <button onclick="closeRegisterModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="text-center mb-6">
+                <div class="w-12 h-12 rounded-xl bg-emerald-50 text-gfg-green flex items-center justify-center mx-auto mb-3">
+                    <i data-lucide="user-plus" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gfg-navy">Student Registration</h3>
+                <p class="text-xs text-slate-500 mt-1">Join GEEKSTOBER FEST & sync your GitHub PRs</p>
+            </div>
+
+            <form onsubmit="handleRegister(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Full Name</label>
+                    <input type="text" required placeholder="John Doe" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gfg-green">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">GitHub Username</label>
+                    <input type="text" required placeholder="octocat" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gfg-green">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">College Email ID</label>
+                    <input type="email" required placeholder="student@rbu.edu.in" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-gfg-green">
+                </div>
+                <button type="submit" class="w-full py-3 bg-gfg-green hover:bg-gfg-darkgreen text-white font-bold rounded-xl shadow-md text-sm transition-all">
+                    Complete Registration
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Application Script Logic -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Sample Data
+        const projects = [
+            { id: 1, title: "AlgoVisualizer-RBU", cat: "web", desc: "Interactive web dashboard for visualizing data structures and algorithm steps in real time.", tags: ["React", "Tailwind", "JS"], mentor: "@sahil_dev", stars: 42 },
+            { id: 2, title: "Campus Connect App", cat: "app", desc: "Cross-platform mobile application for campus announcements, event tracking & peer notes.", tags: ["Flutter", "Firebase"], mentor: "@priya_rbu", stars: 68 },
+            { id: 3, title: "Medical Diagnostic ML", cat: "ai", desc: "Machine learning classifier for detecting anomalies in X-Ray and MRI scan images.", tags: ["Python", "TensorFlow"], mentor: "@dr_dr_ai", stars: 95 },
+            { id: 4, title: "First-Contributions-2026", cat: "beginner", desc: "Friendly starter repository for first-time open source contributors at RBU campus.", tags: ["HTML", "Markdown"], mentor: "@gfg_admin", stars: 120 },
+            { id: 5, title: "DevOps K8s Cluster Scripts", cat: "web", desc: "Automated deployment scripts and Docker configurations for university lab servers.", tags: ["Docker", "Bash"], mentor: "@k8s_geek", stars: 31 },
+            { id: 6, title: "Smart Attendance IoT", cat: "app", desc: "ESP32 facial recognition system connected with a modern real-time Web dashboard.", tags: ["C++", "Node.js"], mentor: "@iot_ninja", stars: 54 }
+        ];
+
+        const leaderboardData = [
+            { rank: 1, name: "Rohan Kulkarni", handle: "rohan_rbu", prs: 21, points: 510, badges: ["🏆 Top Winner", "🚀 Master"] },
+            { rank: 2, name: "Aanya Sharma", handle: "aanya_dev", prs: 14, points: 340, badges: ["🐛 Bug Hunter"] },
+            { rank: 3, name: "Vikram Mehta", handle: "vikram_m", prs: 11, points: 280, badges: ["🌱 First PR"] },
+            { rank: 4, name: "Neha Gupta", handle: "neha_code", prs: 9, points: 210, badges: ["🌱 First PR"] },
+            { rank: 5, name: "Siddharth Rao", handle: "sid_rbu", prs: 8, points: 190, badges: ["🐛 Bug Hunter"] },
+            { rank: 6, name: "Tanvi Patel", handle: "tanvi_p", prs: 6, points: 140, badges: ["🌱 First PR"] }
+        ];
+
+        let activeCategory = 'all';
+
+        // Render Projects Grid
+        function renderProjects() {
+            const grid = document.getElementById('projectsGrid');
+            const searchQuery = document.getElementById('projectSearch').value.toLowerCase();
+
+            const filtered = projects.filter(p => {
+                const matchesCat = activeCategory === 'all' || p.cat === activeCategory;
+                const matchesSearch = p.title.toLowerCase().includes(searchQuery) ||
+                                      p.desc.toLowerCase().includes(searchQuery) ||
+                                      p.mentor.toLowerCase().includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            grid.innerHTML = filtered.map(p => `
+                <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-sky-50 text-sky-700 border border-sky-100">${p.cat.toUpperCase()}</span>
+                            <span class="text-xs text-slate-400 font-medium flex items-center gap-1"><i data-lucide="star" class="w-3.5 h-3.5 text-amber-400 fill-amber-400"></i> ${p.stars}</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-gfg-navy mb-2">${p.title}</h3>
+                        <p class="text-slate-600 text-xs leading-relaxed mb-4">${p.desc}</p>
+                    </div>
+                    <div>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${p.tags.map(t => `<span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-semibold">${t}</span>`).join('')}
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+                            <span class="text-xs font-medium text-slate-500">Mentor: <b class="text-slate-700">${p.mentor}</b></span>
+                            <a href="#" class="inline-flex items-center gap-1 text-xs font-bold text-gfg-green hover:underline">
+                                View Repo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            lucide.createIcons();
+        }
+
+        // Render Leaderboard
+        function renderLeaderboard() {
+            const tbody = document.getElementById('leaderboardBody');
+            const query = document.getElementById('leaderboardSearch').value.toLowerCase();
+
+            const filtered = leaderboardData.filter(u => u.name.toLowerCase().includes(query) || u.handle.toLowerCase().includes(query));
+
+            tbody.innerHTML = filtered.map(u => `
+                <tr class="hover:bg-sky-50/40 transition-colors">
+                    <td class="py-3 px-4 font-black ${u.rank <= 3 ? 'text-gfg-green' : 'text-slate-400'}">#${u.rank}</td>
+                    <td class="py-3 px-4">
+                        <div class="font-bold text-gfg-navy">${u.name}</div>
+                        <div class="text-xs text-slate-400">@${u.handle}</div>
+                    </td>
+                    <td class="py-3 px-4 font-bold text-slate-700">${u.prs}</td>
+                    <td class="py-3 px-4">
+                        <div class="flex gap-1">
+                            ${u.badges.map(b => `<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-gfg-darkgreen text-[10px] font-bold border border-emerald-100">${b}</span>`).join('')}
+                        </div>
+                    </td>
+                    <td class="py-3 px-4 text-right font-black text-gfg-green text-base">${u.points} pts</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterProjects() { renderProjects(); }
+        function filterLeaderboard() { renderLeaderboard(); }
+
+        function setCategory(cat) {
+            activeCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-gfg-navy', 'text-white');
+                btn.classList.add('bg-white', 'text-slate-600');
+            });
+            event.target.classList.add('bg-gfg-navy', 'text-white');
+            renderProjects();
+        }
+
+        // Accordion FAQ Toggle
+        function toggleFaq(id) {
+            const ans = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            ans.classList.toggle('hidden');
+            icon.classList.toggle('rotate-180');
+        }
+
+        // Mobile Nav Drawer Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Modal Handlers
+        function openRegisterModal() {
+            document.getElementById('registerModal').classList.remove('hidden');
+            document.getElementById('registerModal').classList.add('flex');
+        }
+        function closeRegisterModal() {
+            document.getElementById('registerModal').classList.add('hidden');
+            document.getElementById('registerModal').classList.remove('flex');
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            alert('🎉 Registration successful! Welcome to GEEKSTOBER FEST.');
+            closeRegisterModal();
+        }
+
+        // Initial Load Call
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            renderLeaderboard();
+        });
+    </script>
+</body>
+</html>
